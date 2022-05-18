@@ -1,0 +1,10 @@
+*.sqlite3
+*.pyc
+**/__pycache__/*
+<<<<<<< HEAD
+*.log
+=======
+debug.log
+custom_settings.py
+temp.py
+>>>>>>> dev
