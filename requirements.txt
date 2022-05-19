@@ -1,0 +1,5 @@
+asgiref==3.5.2
+Django==4.0.4
+django-floppyforms==1.9.0
+sqlparse==0.4.2
+tzdata==2022.1
