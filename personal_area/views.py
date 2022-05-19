@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model, authenticate, login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views import generic
@@ -31,7 +32,7 @@ class HomeView(generic.ListView):
     paginate_by = 5
 
 
-class PersonalAreaView(generic.DetailView):
+class PersonalAreaView(LoginRequiredMixin, generic.DetailView):
     model = User
     template_name = 'personal_area.html'
     context_object_name = 'user'
