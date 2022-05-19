@@ -15,7 +15,8 @@ class TestSkillsView(TestCase):
 
     def setUp(self):
         test_user = User.objects.create_user(username='test_user', password='12345')
-        test_user.save()
+        for i in range(10):
+            User.objects.create_user(username='user' + str(i), password='12345')
         name = 'test_skill'
         for i in range(10):
             Skills.objects.create(name=name + str(i))
@@ -26,7 +27,10 @@ class TestSkillsView(TestCase):
         server_response = self.client.get(reverse('personal_area:home'))
         self.assertEqual(server_response.status_code, 200)
         self.assertTemplateUsed('home.html')
-        # self.assertTrue(server_response.context['is_paginated'] == True)
+        self.assertTrue(server_response.context['is_paginated'] == True)
+        self.assertEqual(len(server_response.context['users']), 5)
+        server_response_page = self.client.get(reverse('personal_area:home') + '?page=3')
+        self.assertEqual(len(server_response_page.context['users']), 1)
 
     def test_personal_area_view(self):
         server_response = self.client.get(reverse('personal_area:personal_area'))
