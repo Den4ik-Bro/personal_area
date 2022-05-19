@@ -34,4 +34,15 @@
             {% endfor %}
         </table>
     </div>
+    {% if page_obj.has_other_pages %}
+            <div class="pagination">
+                <a class="page-link" href="?page=1">первая страница</a>
+                {% for p in paginator.page_range %}
+                    {% if p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                        <a class="page-link" href="?page={{p}}">{{p}}</a>
+                    {% endif %}
+                {% endfor %}
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">последняя страница</a>
+            </div>
+        {% endif %}
 {% endblock %}

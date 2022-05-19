@@ -28,6 +28,7 @@ class HomeView(generic.ListView):
     model = User
     template_name = 'home.html'
     context_object_name = 'users'
+    paginate_by = 5
 
 
 class PersonalAreaView(generic.DetailView):
