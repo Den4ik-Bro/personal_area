@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block tilte %}Личный кабинет{% endblock %}
+
+{% block content %}
+
+    <h1 style="text-align:center">{{ user.first_name }} {{ user.last_name }}</h1>
+    <div class="container">`
+        <div class="row">
+            <div class="col">
+                <p><h4>Навыки:</h4>
+                    {% for skill in user.user_skill.all %}
+                        <p>
+                            {{ skill }} <a href="{% url 'personal_area:edit_skill' pk=skill.id %}">&#215;</a>
+                        </p>
+                    {% endfor %}
+                </p>
+                 <form action="{% url 'personal_area:add_skills' %}" method="POST">
+                    {% csrf_token %}
+                    {{ skill_form }}
+                    <input class="btn btn-secondary btn-lg" type="submit" value="добавить навык">
+                </form>
+            </div>
+            <div class="col">
+                <p><h4>Языки:</h4>
+                    {% for language in user.user_language.all %}
+                        <p>
+                            {{ language }} <a href="{% url 'personal_area:edit_language' pk=language.id %}">&#215;</a>
+                        </p>
+                    {% endfor %}
+                </p>
+                <form action="{% url 'personal_area:add_languages' %}" method="POST">
+                    {% csrf_token %}
+                    {{ language_form }}
+                    <input class="btn btn-secondary btn-lg" type="submit" value="добавить язык">
+                </form>
+            </div>
+            <div class="col">
+                <p><h4>Увлечения:</h4>
+                    {% for hobby in user.user_hobby.all %}
+                        <p>
+                            {{ hobby }} <a href="{% url 'personal_area:edit_hobby' pk=hobby.id %}">&#215;</a>
+                        </p>
+                    {% endfor %}
+                </p>
+                <form action="{% url 'personal_area:add_hobbys' %}" method="POST">
+                    {% csrf_token %}
+                    {{ hobby_form }}
+                    <input class="btn btn-secondary btn-lg" type="submit" value="добавить увлечение">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

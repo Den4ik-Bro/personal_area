@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <form action="/create_user/" method="POST">
+    <form action="." method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Зарегистрироваться">
