@@ -1,4 +1,4 @@
-asgiref==3.5.2
+asgiref==3.4.1
 Django==4.0.4
 django-floppyforms==1.9.0
 sqlparse==0.4.2
