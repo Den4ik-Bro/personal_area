@@ -58,7 +58,7 @@ class AddSkillsView(generic.CreateView):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
-            skill, created = Skills.objects.get_or_create(skill=form.cleaned_data['skills'])
+            skill, created = Skills.objects.get_or_create(name=form.cleaned_data['skills'])
             skill.user.add(request.user)
             return redirect('/personal_area/')
         return render(request, self.template_name, {'form': form})
@@ -71,7 +71,7 @@ class AddHobbyView(generic.CreateView):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
-            hobby, created = Hobby.objects.get_or_create(hobby=form.cleaned_data['hobby'])
+            hobby, created = Hobby.objects.get_or_create(name=form.cleaned_data['hobby'])
             hobby.user.add(request.user)
             return redirect('/personal_area/')
         return render(request, self.template_name, {'form': form})
@@ -84,7 +84,7 @@ class AddLanguageView(generic.CreateView):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
-            language, created = Language.objects.get_or_create(language=form.cleaned_data['language'])
+            language, created = Language.objects.get_or_create(name=form.cleaned_data['language'])
             language.user.add(request.user)
             return redirect('/personal_area/')
         return render(request, self.template_name, {'form': form})
@@ -95,7 +95,7 @@ class EditUserHobbyView(generic.UpdateView):
 
     def get(self, request, *args, **kwargs):
         hobby = self.get_object()
-        request.user.user_hobby.remove(hobby)
+        request.user.hobbys.remove(hobby)
         return redirect(reverse('personal_area:personal_area'))
 
 
@@ -104,7 +104,7 @@ class EditUserSkillsView(generic.UpdateView):
 
     def get(self, request, *args, **kwargs):
         skill = self.get_object()
-        request.user.user_skill.remove(skill)
+        request.user.skills.remove(skill)
         return redirect(reverse('personal_area:personal_area'))
 
 
@@ -113,7 +113,7 @@ class EditUserLanguagesView(generic.UpdateView):
 
     def get(self, request, *args, **kwargs):
         language = self.get_object()
-        request.user.user_language.remove(language)
+        request.user.languages.remove(language)
         return redirect(reverse('personal_area:personal_area'))
 
 

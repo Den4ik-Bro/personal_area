@@ -6,36 +6,36 @@ User = get_user_model()
 
 
 class Skills(models.Model):
-    skill = models.CharField(max_length=50, verbose_name='навык', null=True, blank=True)
-    user = models.ManyToManyField(User, blank=True, related_name='user_skill')
+    name = models.CharField(max_length=50, verbose_name='название', null=True, blank=True)
+    user = models.ManyToManyField(User, blank=True, related_name='skills')
 
     class Meta:
         verbose_name = 'Навык'
         verbose_name_plural = 'Навыки'
 
     def __str__(self):
-        return self.skill
+        return self.name
 
 
 class Language(models.Model):
-    language = models.CharField(max_length=50, verbose_name='язык', null=True, blank=True)
-    user = models.ManyToManyField(User, blank=True, related_name='user_language')
+    name = models.CharField(max_length=50, verbose_name='название', null=True, blank=True)
+    user = models.ManyToManyField(User, blank=True, related_name='languages')
 
     class Meta:
         verbose_name = 'Язык'
         verbose_name_plural = 'Языки'
 
     def __str__(self):
-        return self.language
+        return self.name
 
 
 class Hobby(models.Model):
-    hobby = models.CharField(max_length=50, verbose_name='увлечения', null=True, blank=True)
-    user = models.ManyToManyField(User, blank=True, related_name='user_hobby')
+    name = models.CharField(max_length=50, verbose_name='название', null=True, blank=True)
+    user = models.ManyToManyField(User, blank=True, related_name='hobbys')
 
     class Meta:
         verbose_name = 'Увлечение'
         verbose_name_plural = 'Увлечения'
 
     def __str__(self):
-        return self.hobby
+        return self.name

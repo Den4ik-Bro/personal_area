@@ -33,7 +33,7 @@ class AddSkillsForm(forms.Form):
         label='',
         required=True,
         widget=floppyforms.TextInput(
-            datalist=Skills.objects.values_list('skill', flat=True),
+            datalist=Skills.objects.values_list('name', flat=True),
             attrs={
                 'placeholder': 'введите навык',
                 # 'class': 'form-control'
@@ -47,7 +47,7 @@ class AddHobbyForm(forms.Form):
         label='',
         required=True,
         widget=floppyforms.TextInput(
-            datalist=Hobby.objects.values_list('hobby', flat=True),
+            datalist=Hobby.objects.values_list('name', flat=True),
             attrs={
                 'placeholder': 'введите хобби'
             }
@@ -60,7 +60,7 @@ class AddLanguageForm(forms.Form):
         label='',
         required=True,
         widget=floppyforms.TextInput(
-            datalist=Language.objects.values_list('language', flat=True),
+            datalist=Language.objects.values_list('name', flat=True),
             attrs={
                 'placeholder': 'введите язык'
             }

@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col">
                 <p><h4>Навыки:</h4>
-                    {% for skill in user.user_skill.all %}
+                    {% for skill in user.skills.all %}
                         <p>
                             {{ skill }} <a href="{% url 'personal_area:edit_skill' pk=skill.id %}">&#215;</a>
                         </p>
@@ -23,7 +23,7 @@
             </div>
             <div class="col">
                 <p><h4>Языки:</h4>
-                    {% for language in user.user_language.all %}
+                    {% for language in user.languages.all %}
                         <p>
                             {{ language }} <a href="{% url 'personal_area:edit_language' pk=language.id %}">&#215;</a>
                         </p>
@@ -37,7 +37,7 @@
             </div>
             <div class="col">
                 <p><h4>Увлечения:</h4>
-                    {% for hobby in user.user_hobby.all %}
+                    {% for hobby in user.hobbys.all %}
                         <p>
                             {{ hobby }} <a href="{% url 'personal_area:edit_hobby' pk=hobby.id %}">&#215;</a>
                         </p>

@@ -14,20 +14,24 @@
             </tr>
             {% for user in users %}
             <tr>
-                <th>{{ user.username }}</th>
+                {% if user.first_name and user.last_name %}
+                    <th>{{ user.first_name }} {{ user.last_name }}</th>
+                {% else %}
+                    <th>{{ user.username }}</th>
+                {% endif %}
                 <th>
-                    {% for skill in user.user_skill.all %}
-                        <p>{{ skill }}</p>
+                    {% for skill in user.skills.all %}
+                        {{ skill }},
                     {% endfor %}
                 </th>
                 <th>
-                    {% for language in user.user_language.all %}
-                        <p>{{ language }}</p>
+                    {% for language in user.languages.all %}
+                        {{ language }},
                     {% endfor %}
                 </th>
                 <th>
-                    {% for hobby in user.user_hobby.all %}
-                        <p>{{ hobby }}</p>
+                    {% for hobby in user.hobbys.all %}
+                        {{ hobby }},
                     {% endfor %}
                 </th>
             </tr>
