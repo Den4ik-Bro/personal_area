@@ -51,7 +51,7 @@ class PersonalAreaView(LoginRequiredMixin, generic.DetailView):
         return context
 
 
-class AddSkillsView(generic.CreateView):
+class AddSkillsView(LoginRequiredMixin, generic.CreateView):
     template_name = 'personal_area.html'
     form_class = AddSkillsForm
 
@@ -64,7 +64,7 @@ class AddSkillsView(generic.CreateView):
         return render(request, self.template_name, {'form': form})
 
 
-class AddHobbyView(generic.CreateView):
+class AddHobbyView(LoginRequiredMixin, generic.CreateView):
     template_name = 'personal_area.html'
     form_class = AddHobbyForm
 
@@ -77,7 +77,7 @@ class AddHobbyView(generic.CreateView):
         return render(request, self.template_name, {'form': form})
 
 
-class AddLanguageView(generic.CreateView):
+class AddLanguageView(LoginRequiredMixin, generic.CreateView):
     template_name = 'personal_area.html'
     form_class = AddLanguageForm
 
@@ -90,7 +90,7 @@ class AddLanguageView(generic.CreateView):
         return render(request, self.template_name, {'form': form})
 
 
-class EditUserHobbyView(generic.UpdateView):
+class EditUserHobbyView(LoginRequiredMixin, generic.UpdateView):
     model = Hobby
 
     def get(self, request, *args, **kwargs):
@@ -99,7 +99,7 @@ class EditUserHobbyView(generic.UpdateView):
         return redirect(reverse('personal_area:personal_area'))
 
 
-class EditUserSkillsView(generic.UpdateView):
+class EditUserSkillsView(LoginRequiredMixin, generic.UpdateView):
     model = Skills
 
     def get(self, request, *args, **kwargs):
@@ -108,7 +108,7 @@ class EditUserSkillsView(generic.UpdateView):
         return redirect(reverse('personal_area:personal_area'))
 
 
-class EditUserLanguagesView(generic.UpdateView):
+class EditUserLanguagesView(LoginRequiredMixin, generic.UpdateView):
     model = Language
 
     def get(self, request, *args, **kwargs):
